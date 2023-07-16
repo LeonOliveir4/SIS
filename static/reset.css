@@ -1,0 +1,160 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+a,
+abbr,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+br,
+button,
+canvas,
+caption,
+center,
+cite,
+code,
+col,
+colgroup,
+command,
+datalist,
+dd,
+del,
+details,
+dfn,
+dialog,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+i,
+iframe,
+img,
+input,
+ins,
+kbd,
+keygen,
+label,
+legend,
+li,
+link,
+mark,
+menu,
+meta,
+meter,
+nav,
+noscript,
+object,
+ol,
+optgroup,
+option,
+output,
+p,
+param,
+pre,
+progress,
+q,
+rp,
+rt,
+ruby,
+s,
+samp,
+script,
+section,
+select,
+small,
+source,
+span,
+strong,
+style,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+textarea,
+tfoot,
+th,
+thead,
+time,
+title,
+tr,
+track,
+tt,
+u,
+ul,
+var,
+video {
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

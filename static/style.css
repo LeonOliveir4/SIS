@@ -2,21 +2,40 @@ html {
     background-color: #EBF5F9;
 }
 
-.rodape{
-    background-color:#0068C0;
-    color:#f9f9f9;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+  
+  main {
+    grid-row: 2;
+  }
+
+.rodape {
+    background-color: #0068C0;
+    color: #f9f9f9;
     font-family: 'Montserrat';
     font-size: 16px;
-    padding:20px 40px 20px 40px;
     text-align: center;
+    height: 80px;
+    width: 100%;
 }
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color:#0068C0;
-    color:#f9f9f9;
+    background-color: #0068C0;
+    color: #f9f9f9;
     font-family: 'Montserrat';
     font-size: 16px;
 }
@@ -26,3 +45,51 @@ header {
     height: 80px;
     width: 80px;
 }
+
+/**
+* Pagina Doenças
+*/
+
+.titulos-doenca {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.container-doencas {
+    padding: 1%;
+    display: grid;
+    grid-template-rows: (3, max-content);
+    grid-auto-flow: row;
+    justify-content: start;
+    font-family: 'Montserrat';
+}
+
+.doenca-titulos {
+    padding-block: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #00996D;
+}
+
+
+.container-doencas h2:not(:first-of-type):not(:first-child) {
+    display: grid;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+.container-doencas p {
+    font-size: 14px;
+}
+
+.container-doencas ul {
+    list-style: initial;
+    margin: initial;
+    padding: 0 0 0 40px;
+}
+
+.container-doencas li {
+    display: list-item;
+}
+
+/** Fim Pagina Doenças **/
