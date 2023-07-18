@@ -1,3 +1,4 @@
+/* Elementos comuns a todas as páginas */
 html {
     font-family: 'Montserrat';
     margin:0;
@@ -7,7 +8,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 header{
     background: #0068C0;
@@ -47,10 +48,19 @@ nav ul li a::after{
     transition: 0.5s;
 }
 
-ul li a:hover::after{
+nav ul li a:hover::after{
     width: 100%;
 }
-
+.rodape{
+  height: 60px;
+  margin-top: 25px;
+  background-color:#0068C0;
+  color:#f9f9f9;
+  font-size: 12px;
+  padding-top: 1px;
+  text-align: center;
+}
+/* Página HOME */
 .banner {
     width:100%;
     height:500px;
@@ -62,7 +72,7 @@ ul li a:hover::after{
     margin-top: 80px;
     margin-bottom: 0;
     margin-left: 50px;
-    padding-right: 50px; /* Ajuste o valor conforme necessário */
+    padding-right: 50px; 
     width: 500px;
     height: 450px;
     float: left;
@@ -109,13 +119,85 @@ ul li a:hover::after{
     background: linear-gradient(#009c3b,#00996d);
     color: #fff;
 }
-.rodape{
-    height: 60px;
-    margin-top: 25px;
-    background-color:#0068C0;
-    color:#f9f9f9;
-    font-size: 12px;
-    padding-top: 1px;
-    text-align: center;
+
+/* Página de regiões - Painel geral */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
+.filters select {
+  font-weight: bold;
+    font-size: 14px;
+    padding: 7px 30px;
+    margin-right: 15px;
+    outline: none;
+    border:1px solid #00929a;
+    border-radius: 20px;
+    cursor: pointer;
+    color:#00929a;
+    background: transparent;
+}
+
+.disease-list {
+  margin: 40px 40px 90px 40px;
+  background-color: #EBF5F9;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
+.painel-geral{
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+
+.painel-geral h5{
+  margin-bottom: 0;
+  
+}
+.SIS{
+  color:#009c3b;
+}
+.atualizacao{
+  margin-top:0;
+  color:#00929a;
+}
+.painel-geral h1{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.d-list ul {
+  margin: 0;
+}
+.d-list ul li{
+  list-style: none;
+  margin: 10px 0px;
+  padding: 10px;
+}
+.d-list ul li a{
+  font-weight: bold;
+  text-decoration: none;
+  color:#000;
+  position: relative;
+}
+
+.d-list ul li a::after{
+  content: ' ';
+  width: 0%;
+  height: 1px;
+  background:#00929a;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 110%;
+  transition: 0.5s;
+}
+
+.d-list ul li a:hover::after{
+  width: 100%;
+}
