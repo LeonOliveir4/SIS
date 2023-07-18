@@ -28,6 +28,17 @@ function apontador(){
             })
         );
 
+        document.querySelectorAll('path').forEach((el) =>
+            el.addEventListener("click", (event) => {
+                //description.classList.remove("active");
+                console.log("clickou");
+                if(event.target instanceof Element){
+
+                    window.location.href = '/static/doencas.html?regiao=' + event.target.getAttribute("class");
+                }
+            })
+        );
+
         document.onmousemove = function (e) {
             
             description.style.left = e.pageX + "px";
