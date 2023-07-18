@@ -1,246 +1,76 @@
-html {
+* {
     background-color: #EBF5F9;
-}
-
-.rodape{
-    background-color:#0068C0;
-    color:#f9f9f9;
     font-family: 'Montserrat';
-    font-size: 16px;
-    padding:20px 40px 20px 40px;
-    text-align: center;
-}
-header{
-    background: #0068C0;
-    margin-bottom:0;
-    padding-left: 15px;
-}
-
-nav{
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
-nav ul li{
-    display: inline-block;
-    list-style: none;
-    margin: 10px 25px;
-}
-
-nav ul li a{
-    text-decoration: none;
-    color:#fff;
-    padding: 0 10px;
-    position: relative;
-}
-
-nav ul li a::after{
-    content: ' ';
-    width: 0%;
-    height: 7px;
-    background:#fff;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 110%;
-    transition: 0.5s;
-}
-
-nav ul li a:hover::after{
-    width: 100%;
-}
-
-#logo {
-    border: none;
-    height: 80px;
-    width: 80px;
-}
-/**
-* Pagina Doenças
-*/
-
-.titulos-doenca {
-    font-size: 40px;
-    font-weight: bold;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-}
-
-.container-doencas {
-    padding: 1%;
-    display: grid;
-    grid-template-rows: (3, max-content);
-    grid-auto-flow: row;
-    justify-content: start;
-    font-family: 'Montserrat';
-}
-
-.doenca-titulos {
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #00996D;
-}
-
-.container-doencas h2:first-of-type:not(:first-child) {
-    padding-top: 0px;
-    margin-top: 0px;
-}
-
-.container-doencas h2:not(:first-of-type):not(:first-child) {
-    display: grid;
-    justify-content: space-between;
-    padding-top: 50px;
-}
-
-.container-doencas p {
-    margin-top: 0px;
-    padding-top: 0px;
-    font-size: 14px;
-}
-
-.container-doencas ul {
-    margin-top: 0px;
-    padding-top: 0px;
-    list-style: initial;
-    margin: initial;
-    padding: 0 0 0 40px;
-}
-
-.container-doencas li {
-    margin-top: 0px;
-    padding-top: 0px;
-    display: list-item;
-}
-
-/* html {
-    background-color: #EBF5F9;
-}
-
-html,
-body {
-    height: 100%;
     margin: 0;
     padding: 0;
 }
 
-body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-  }
-  
-  main {
-    grid-row: 2;
-  }
+.hero {
+    width: 80%;
+    margin: auto;
+}
 
-.rodape {
-    background-color: #0068C0;
-    color: #f9f9f9;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    text-align: center;
-    height: 80px;
-    width: 100%;
-} */
-
-/** Fim Pagina Doenças **/
-
-
-
-
-/* Trecho da pagina do mapa */
-/*
-body{
-    width: 90vw;
-    height: 90vh;
+.navbar{
+    margin: 30px auto;
     display: flex;
-    justify-content: center;
-    background-color: aquamarine;
-}
-*/
-.container-mapa{
     align-items: center;
-    justify-content: center;
-    padding: 50px;
-    /*width: 80%;*/
-    /*width: 65vw;*/
-    /*height: 35%;*/
-    /*display: flex;*/
-    justify-content: center;
 }
 
-svg{
-    /*width: 7%;*/
-    height: 70vh;
+ul{
+    flex:1;
+    text-align: right;
+}
+ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 25px;
+}
+ul li a{
+    text-decoration: none;
+    color:#000;
+    padding: 0 10px;
+    position: relative;
 }
 
-.norte{
-    fill: #009c3b;
-}
-
-.nordeste{
-    fill: #00929a;
-}
-
-.centro-oeste{
-    fill: #0068c0;
-}
-
-.sudeste{
-    fill: #00996d;
-}
-
-.sul{
-    fill: #0089bb;
-}
-
-path{
-    fill: #1da1f2;
-    stroke: white;
-    stroke-width: 1px;
-
-}
-
-path:hover{
-    fill: purple;
-    stroke: red;
-    stroke-width: 3px;
-    transition: fill 0.4s;
-}
-
-.tooltip {
-    pointer-events: none;
-    position: absolute;
-    font-size: 18px;
-    text-align: center;
-    background: white;
-    padding: 10px 15px;
-    z-index: 5;
-    height: 30px;
-    line-height: 30px;
-    margin: 0 auto;
-    border-radius: 5px;
-    transform: translateX(-50%);
-    display: none;
-}
-
-.tooltip.active {
-    display: block;
-}
-
-.tooltip:after {
-    content: "";
+ul li a ::after{
+    content: ' ';
+    width: 100%;
+    height: 10px;
+    background:#009c3b;
     position: absolute;
     left: 50%;
-    top: 100%;
-    width: 0;
-    height: 0;
-    margin-left: -10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white;
+    transform: translateX(-50%);
+    top: -55%;
+    transition: 0.5s;
 }
+
+ul li a :hover::after{
+    width: 100%;
+}
+
+.baner{
+    display: flex;
+    margin-top: 80px;
+}
+.left-column, .right-column{
+    flex-basis: 50%;
+}
+.right-column img{
+    width: 50%;
+}
+.left-column h1{
+    font-size: 40px;
+}
+.left-column h3{
+    font-size: 25px;
+}
+.Brasil{
+    color:#009c3b
+}
+.rodape{
+    background-color:#0068C0;
+    color:#f9f9f9;
+    font-size: 16px;
+    text-align: center;
+}
+
