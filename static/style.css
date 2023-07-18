@@ -2,12 +2,17 @@ html {
     font-family: 'Montserrat';
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
+body {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0
+  }
 header{
     background: #0068C0;
-    width: 100%;
     margin-bottom:0;
-    padding:0;
+    padding-left: 15px;
 }
 
 nav{
@@ -45,18 +50,21 @@ nav ul li a::after{
 ul li a:hover::after{
     width: 100%;
 }
-.baner {
+
+.banner {
     width:100%;
     height:500px;
     margin-top: 0;
+    margin-bottom: 0;
   }
   
   .text-box {
-    margin-top: 100px;
+    margin-top: 80px;
+    margin-bottom: 0;
     margin-left: 50px;
     padding-right: 50px; /* Ajuste o valor conforme necessário */
     width: 500px;
-    height: 500px;
+    height: 450px;
     float: left;
     align-items: center;
   }
@@ -102,9 +110,12 @@ ul li a:hover::after{
     color: #fff;
 }
 .rodape{
+    height: 60px;
+    margin-top: 25px;
     background-color:#0068C0;
     color:#f9f9f9;
-    font-size: 16px;
+    font-size: 12px;
+    padding-top: 1px;
     text-align: center;
 }
 
