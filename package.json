@@ -3,7 +3,7 @@
     "typescript": "^5.1.6"
   },
   "name": "sis",
-  "description": "![Logo a ser Desenvolvida](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82Ns7Toe2v1p7NSaSZWEsCwSpxcdMtwuAvldgx30yrKsjBOhk1nShR1zFy8YPiLuVkMM&usqp=CAU)",
+  "description": "![Logo SIS](img/logo2.png)",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},

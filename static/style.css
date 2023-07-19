@@ -1,124 +1,224 @@
 /* Elementos comuns a todas as páginas */
 html {
-    font-family: 'Montserrat';
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+  font-family: 'Montserrat';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 0;
-  }
-header{
-    background: #0068C0;
-    margin-bottom:0;
-    padding-left: 15px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0;
 }
 
-nav{
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    padding: 0;
-}
-nav ul li{
-    display: inline-block;
-    list-style: none;
-    margin: 10px 25px;
+header {
+  background: #0068C0;
+  margin-bottom: 0;
+  padding-left: 15px;
 }
 
-nav ul li a{
-    text-decoration: none;
-    color:#fff;
-    padding: 0 10px;
-    position: relative;
+nav {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
 
-nav ul li a::after{
-    content: ' ';
-    width: 0%;
-    height: 7px;
-    background:#fff;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 110%;
-    transition: 0.5s;
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 25px;
 }
 
-nav ul li a:hover::after{
-    width: 100%;
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 10px;
+  position: relative;
 }
-.rodape{
+
+nav ul li a::after {
+  content: ' ';
+  width: 0%;
+  height: 7px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 110%;
+  transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.rodape {
   height: 60px;
   margin-top: 25px;
-  background-color:#0068C0;
-  color:#f9f9f9;
+  background-color: #0068C0;
+  color: #f9f9f9;
   font-size: 12px;
   padding-top: 1px;
   text-align: center;
 }
+
 /* Página HOME */
 .banner {
-    width:100%;
-    height:500px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  
-  .text-box {
-    margin-top: 80px;
-    margin-bottom: 0;
-    margin-left: 50px;
-    padding-right: 50px; 
-    width: 500px;
-    height: 450px;
-    float: left;
-    align-items: center;
-  }
-  
-  .right-column {
-    margin-top:15px;
-    width: 700px;
-    height: 500px;
-    float: right;
-  }
-  
-  .right-column img {
-    max-width: 700px;
-    max-height: 500px;
-  }
-  
-  .text-box h1 {
-    font-size: 40px;
-  }
-  
-  .text-box h3 {
-    font-size: 25px;
-  }
-  
-  .Brasil {
-    color: #009c3b;
-  }
+  width: 100%;
+  height: 500px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-.btn button{
-    font-weight: bold;
-    font-size: 14px;
-    padding: 7px 30px;
-    margin-right: 15px;
-    outline: none;
-    border:1px solid #009c3b;
-    border-radius: 20px;
-    cursor: pointer;
-    color:#009c3b;
-    background: transparent;
+.text-box {
+  margin-top: 80px;
+  margin-bottom: 0;
+  margin-left: 50px;
+  padding-right: 50px;
+  width: 500px;
+  height: 450px;
+  float: left;
+  align-items: center;
 }
-.btn .painel-btn{
-    background: linear-gradient(#009c3b,#00996d);
-    color: #fff;
+
+.right-column {
+  margin-top: 15px;
+  width: 700px;
+  height: 500px;
+  float: right;
 }
+
+.right-column img {
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.text-box h1 {
+  font-size: 40px;
+}
+
+.text-box h3 {
+  font-size: 25px;
+}
+
+.Brasil {
+  color: #009c3b;
+}
+
+.btn button {
+  font-weight: bold;
+  font-size: 14px;
+  padding: 7px 30px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid #009c3b;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #009c3b;
+  background: transparent;
+}
+
+.btn .painel-btn {
+  background: linear-gradient(#009c3b, #00996d);
+  color: #fff;
+}
+
+/**
+* Pagina Doenças
+*/
+.titulos-doenca,
+.sobre-titulo {
+  font-size: 40px;
+  font-weight: bold;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.container-doencas,
+.sobre-container {
+  padding: 1%;
+  display: grid;
+  grid-template-rows: (3, max-content);
+  grid-auto-flow: row;
+  justify-content: start;
+  font-family: 'Montserrat';
+}
+
+.doenca-titulos,
+.sobre-subtitulo {
+  padding-block: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #00996D;
+}
+
+.container-doencas,
+.sobre-container h2:first-of-type:not(:first-child) {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.container-doencas,
+.sobre-container h2:not(:first-of-type):not(:first-child) {
+  display: grid;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
+.container-doencas,
+.sobre-container p {
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 14px;
+}
+
+.container-doencas ul {
+  margin-top: 0px;
+  padding-top: 0px;
+  list-style: initial;
+  margin: initial;
+  padding: 0 0 0 40px;
+}
+
+.container-doencas li {
+  margin-top: 0px;
+  padding-top: 0px;
+  display: list-item;
+}
+
+/* html {
+  background-color: #EBF5F9;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+main {
+  grid-row: 2;
+}
+.rodape {
+  background-color: #0068C0;
+  color: #f9f9f9;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  text-align: center;
+  height: 80px;
+  width: 100%;
+} */
+/** Fim Pagina Doenças **/
 
 /* Página de regiões - Painel geral */
 .filters {
@@ -131,15 +231,15 @@ nav ul li a:hover::after{
 
 .filters select {
   font-weight: bold;
-    font-size: 14px;
-    padding: 7px 30px;
-    margin-right: 15px;
-    outline: none;
-    border:1px solid #00929a;
-    border-radius: 20px;
-    cursor: pointer;
-    color:#00929a;
-    background: transparent;
+  font-size: 14px;
+  padding: 7px 30px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid #00929a;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #00929a;
+  background: transparent;
 }
 
 .disease-list {
@@ -148,49 +248,55 @@ nav ul li a:hover::after{
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
 }
 
-.painel-geral{
+.painel-geral {
   margin-left: 40px;
   margin-bottom: 0;
 }
 
-.painel-geral h5{
+.painel-geral h5 {
   margin-bottom: 0;
-  
+
 }
-.SIS{
-  color:#009c3b;
+
+.SIS {
+  color: #009c3b;
 }
-.atualizacao{
-  margin-top:0;
-  color:#00929a;
+
+.atualizacao {
+  margin-top: 0;
+  color: #00929a;
 }
-.painel-geral h1{
+
+.painel-geral h1 {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .d-list ul {
   margin: 0;
 }
-.d-list ul li{
+
+.d-list ul li {
   list-style: none;
   margin: 10px 0px;
   padding: 10px;
 }
-.d-list ul li a{
+
+.d-list ul li a {
   font-weight: bold;
   text-decoration: none;
-  color:#000;
+  color: #000;
   position: relative;
 }
 
-.d-list ul li a::after{
+.d-list ul li a::after {
   content: ' ';
   width: 0%;
   height: 1px;
-  background:#00929a;
+  background: #00929a;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -198,93 +304,92 @@ nav ul li a:hover::after{
   transition: 0.5s;
 }
 
-.d-list ul li a:hover::after{
+.d-list ul li a:hover::after {
   width: 100%;
 }
 
 
 /* Trecho da pagina do mapa */
-.container-mapa{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    /*width: 80%;*/
-    /*width: 65vw;*/
-    /*height: 35%;*/
-    
-    /*justify-content: center;*/
+.container-mapa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  /*width: 80%;*/
+  /*width: 65vw;*/
+  /*height: 35%;*/
+
+  /*justify-content: center;*/
 }
 
-svg{
-    /*width: 7%;*/
-    height: 70vh;
+svg {
+  /*width: 7%;*/
+  height: 70vh;
 }
 
-.norte{
-    fill: #009c3b;
+.norte {
+  fill: #009c3b;
 }
 
-.nordeste{
-    fill: #00929a;
+.nordeste {
+  fill: #00929a;
 }
 
-.centro-oeste{
-    fill: #0068c0;
+.centro-oeste {
+  fill: #0068c0;
 }
 
-.sudeste{
-    fill: #00996d;
+.sudeste {
+  fill: #00996d;
 }
 
-.sul{
-    fill: #0089bb;
+.sul {
+  fill: #0089bb;
 }
 
-path{
-    fill: #1da1f2;
-    stroke: white;
-    stroke-width: 1px;
+path {
+  fill: #1da1f2;
+  stroke: white;
+  stroke-width: 1px;
 
 }
 
-path:hover{
-    fill: purple;
-    stroke: red;
-    stroke-width: 3px;
-    transition: fill 0.4s;
+path:hover {
+  fill: purple;
+  stroke: red;
+  stroke-width: 3px;
+  transition: fill 0.4s;
 }
 
 .tooltip {
-    pointer-events: none;
-    position: absolute;
-    font-size: 18px;
-    text-align: center;
-    background: white;
-    padding: 10px 15px;
-    z-index: 5;
-    height: 30px;
-    line-height: 30px;
-    margin: 0 auto;
-    border-radius: 5px;
-    transform: translateX(-50%);
-    display: none;
+  pointer-events: none;
+  position: absolute;
+  font-size: 18px;
+  text-align: center;
+  background: white;
+  padding: 10px 15px;
+  z-index: 5;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  display: none;
 }
 
 .tooltip.active {
-    display: block;
+  display: block;
 }
 
 .tooltip:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    width: 0;
-    height: 0;
-    margin-left: -10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
 }
-

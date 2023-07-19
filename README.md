@@ -1,7 +1,7 @@
 
 
  
-![Logo a ser Desenvolvida](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT82Ns7Toe2v1p7NSaSZWEsCwSpxcdMtwuAvldgx30yrKsjBOhk1nShR1zFy8YPiLuVkMM&usqp=CAU)
+![Logo SIS](img/logo2.png)
 
 
 # SIS
@@ -35,13 +35,13 @@ Trata-se de um desenvolvimento web que venha a facilitar o conhecimento a respei
 
 ## Autores
 ### Link para o perfil dos autores no GitHub
-- [@Camila]() 
-- [@Daniel]()
-- [@Henrique]()
+- [@Camila](https://github.com/CamilaASantos) 
+- [@Daniel](https://github.com/ddomontenegro)
+- [@Henrique](https://github.com/henriquefsa98)
 - [@Leonardo](https://github.com/leonardo-Pires-de-Oliveira)
 
 
-## Referência
+## Referências
 
  - [Saúde na Região x]() -> linkar ao consultar fontes recentes
  - [Saúde na Região x na estação y]() -> linkar ao consultar fontes recentes
