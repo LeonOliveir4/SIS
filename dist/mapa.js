@@ -23,7 +23,7 @@ function apontador() {
             //description.classList.remove("active");
             console.log("clickou");
             if (event.target instanceof Element) {
-                window.location.href = '/static/doencas.html?regiao=' + event.target.getAttribute("class");
+                window.location.href = '/static/regiao.html?regiao=' + event.target.getAttribute("class");
             }
         }));
         document.onmousemove = function (e) {
