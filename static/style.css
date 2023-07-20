@@ -129,16 +129,14 @@ nav ul li a:hover::after {
 /**
 * Pagina Doenças
 */
-.titulos-doenca,
-.sobre-titulo {
+.titulos-doenca {
   font-size: 40px;
   font-weight: bold;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
 
-.container-doencas,
-.sobre-container {
+.container-doencas {
   padding: 1%;
   display: grid;
   grid-template-rows: (3, max-content);
@@ -147,8 +145,7 @@ nav ul li a:hover::after {
   font-family: 'Montserrat';
 }
 
-.doenca-titulos,
-.sobre-subtitulo {
+.doenca-titulos {
   padding-block: 10px;
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -157,13 +154,13 @@ nav ul li a:hover::after {
   color: #00996D;
 }
 
-.container-doencas,
+.container-doencas h2:first-of-type:not(:first-child),
 .sobre-container h2:first-of-type:not(:first-child) {
   padding-top: 0px;
   margin-top: 0px;
 }
 
-.container-doencas,
+.container-doencas h2:not(:first-of-type):not(:first-child),
 .sobre-container h2:not(:first-of-type):not(:first-child) {
   display: grid;
   justify-content: space-between;
