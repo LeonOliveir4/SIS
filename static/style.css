@@ -129,14 +129,16 @@ nav ul li a:hover::after {
 /**
 * Pagina Doenças
 */
-.titulos-doenca {
+.titulos-doenca,
+.sobre-titulo {
   font-size: 40px;
   font-weight: bold;
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
 
-.container-doencas {
+.container-doencas,
+.sobre-container {
   padding: 1%;
   display: grid;
   grid-template-rows: (3, max-content);
@@ -145,7 +147,8 @@ nav ul li a:hover::after {
   font-family: 'Montserrat';
 }
 
-.doenca-titulos {
+.doenca-titulos,
+.sobre-subtitulo {
   padding-block: 10px;
   padding-bottom: 0px;
   margin-bottom: 0px;
