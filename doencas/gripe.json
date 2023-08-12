@@ -1,0 +1,33 @@
+{
+	"nome": "Gripe",
+	"geral": "A gripe é uma infecção aguda do sistema respiratório, provocado pelo vírus da influenza, com grande potencial de transmissão. Existem quatro tipos de vírus influenza/gripe: A, B, C e D. O vírus influenza A e B são responsáveis por epidemias sazonais, sendo o vírus influenza A responsável pelas grandes pandemias.",
+	"sintomas": [
+	{
+		"sintoma": "febre" 
+	},
+	{
+		"sintoma": "calafrios" 
+	},
+	{
+		"sintoma": "dores musculares" 
+	},
+	{
+		"sintoma": "tosse" 
+	},
+	{
+		"sintoma": "congestão" 
+	},
+	{
+		"sintoma": "coriza" 
+	},
+	{
+		"sintoma": "dores de cabeça" 
+	}, 
+	{
+		"sintoma": "fadiga"
+	}
+	],
+	"tratamentos": "A gripe é tratada principalmente com repouso e ingestão de líquidos para permitir que o corpo combata a infecção por conta própria. Analgésicos anti-inflamatórios vendidos sem prescrição médica podem ajudar com os sintomas. Uma vacina anual pode ajudar a prevenir a gripe e limitar suas complicações.",
+	"regiao": "Sudeste",
+	"estacao": "Primavera"
+}
