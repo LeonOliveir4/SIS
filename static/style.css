@@ -278,40 +278,43 @@ svg {
   height: 70vh;
 }
 
-.norte {
-  fill: #009c3b;
-}
-
-.nordeste {
-  fill: #00929a;
-}
-
-.centro-oeste {
-  fill: #0068c0;
-}
-
-.sudeste {
-  fill: #00996d;
-}
-
-.sul {
-  fill: #0089bb;
-}
-
-path {
-  fill: #1da1f2;
-  stroke: white;
+g {
+  fill: rgb(208, 203, 203);
+  /* fill: #1da1f2; */
   stroke-width: 1px;
-
 }
 
-path:hover {
-  fill: purple;
-  stroke: red;
-  stroke-width: 3px;
+#sul:hover path{
+  fill: #0089bb;
+  stroke: white;
+  stroke-width: 2px;
   transition: fill 0.4s;
 }
 
+#centro-oeste:hover path{
+  fill: #0068c0;
+  stroke: white;
+  stroke-width: 2px;
+  transition: fill 0.4s;
+}
+#sudeste:hover path{
+  fill: #00996d;
+  stroke: white;
+  stroke-width: 2px;
+  transition: fill 0.4s;
+}
+#nordeste:hover path{
+  fill: #00929a;
+  stroke: white;
+  stroke-width: 2px;
+  transition: fill 0.4s;
+}
+#norte:hover path{
+  fill: #009c3b;
+  stroke: white;
+  stroke-width: 2px;
+  transition: fill 0.4s;
+}
 .tooltip {
   pointer-events: none;
   position: absolute;

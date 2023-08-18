@@ -4,7 +4,7 @@ function apontador(){
 
     if(description instanceof HTMLElement){
     
-        document.querySelectorAll('path').forEach((el) =>
+        document.querySelectorAll('.regiao').forEach((el) =>
             el.addEventListener('mouseover', (event) => {
                 if(event.target instanceof Element){
                     //event.target.className = ("enabled");
@@ -21,14 +21,14 @@ function apontador(){
 
         );
 
-        document.querySelectorAll('path').forEach((el) =>
+        document.querySelectorAll('.regiao').forEach((el) =>
             el.addEventListener("mouseout", () => {
                 description.classList.remove("active");
                 //console.log("mouseout");
             })
         );
 
-        document.querySelectorAll('path').forEach((el) =>
+        document.querySelectorAll('.regiao').forEach((el) =>
             el.addEventListener("click", (event) => {
                 //description.classList.remove("active");
                 console.log("clickou");

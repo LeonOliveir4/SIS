@@ -66,7 +66,7 @@ app.get('/doencas', (req, res) => {
 });
 
 app.get('/mapa', (req, res) => {
-  res.render('mapa', { activePage: 'mapa' })
+  res.render('mapa', {activePage: 'mapa'})
 });
 
 app.get('/regiao', (req, res) => {

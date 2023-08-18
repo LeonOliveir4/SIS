@@ -1,8 +1,9 @@
 "use strict";
+console.log("Chamou js");
 function apontador() {
     const description = document.querySelector(".tooltip");
     if (description instanceof HTMLElement) {
-        document.querySelectorAll('path').forEach((el) => el.addEventListener('mouseover', (event) => {
+        document.querySelectorAll('.regiao').forEach((el) => el.addEventListener('mouseover', (event) => {
             if (event.target instanceof Element) {
                 //event.target.className = ("enabled");
                 //event.target.setAttribute("class", "enabled");//faz com que os estados visitados fiquem azul...
@@ -15,11 +16,11 @@ function apontador() {
                 //console.log("mouseover");
             }
         }));
-        document.querySelectorAll('path').forEach((el) => el.addEventListener("mouseout", () => {
+        document.querySelectorAll('.regiao').forEach((el) => el.addEventListener("mouseout", () => {
             description.classList.remove("active");
             //console.log("mouseout");
         }));
-        document.querySelectorAll('path').forEach((el) => el.addEventListener("click", (event) => {
+        document.querySelectorAll('.regiao').forEach((el) => el.addEventListener("click", (event) => {
             //description.classList.remove("active");
             console.log("clickou");
             if (event.target instanceof Element) {
