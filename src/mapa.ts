@@ -34,7 +34,7 @@ function apontador(){
                 console.log("clickou");
                 if(event.target instanceof Element){
 
-                    window.location.href = '/static/regiao.html?regiao=' + event.target.getAttribute("class");
+                    window.location.href = 'regiao?regiao=' + event.target.getAttribute("class");
                 }
             })
         );

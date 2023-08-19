@@ -20,6 +20,9 @@ app.use('/static', e.static(
 app.use('/img', e.static(
   path.join(__dirname, '..', 'img')))
 
+app.use('/dist', e.static(
+  path.join(__dirname, '..', 'dist')))
+
 // Rotas
 app.get('/', (req, res) => {
   res.render('home', { activePage: 'home' })
@@ -66,7 +69,9 @@ app.get('/doencas', (req, res) => {
 });
 
 app.get('/mapa', (req, res) => {
-  res.render('mapa', {activePage: 'mapa'})
+  res.render('mapa', {
+    activePage: 'mapa',
+  });
 });
 
 app.get('/regiao', (req, res) => {
