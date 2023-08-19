@@ -284,32 +284,32 @@ g {
   stroke-width: 1px;
 }
 
-#sul:hover path{
+#_sul:hover path{
   fill: #0089bb;
   stroke: white;
   stroke-width: 2px;
   transition: fill 0.4s;
 }
 
-#centro-oeste:hover path{
+#_centro-oeste:hover path{
   fill: #0068c0;
   stroke: white;
   stroke-width: 2px;
   transition: fill 0.4s;
 }
-#sudeste:hover path{
+#_sudeste:hover path{
   fill: #00996d;
   stroke: white;
   stroke-width: 2px;
   transition: fill 0.4s;
 }
-#nordeste:hover path{
+#_nordeste:hover path{
   fill: #00929a;
   stroke: white;
   stroke-width: 2px;
   transition: fill 0.4s;
 }
-#norte:hover path{
+#_norte:hover path{
   fill: #009c3b;
   stroke: white;
   stroke-width: 2px;
