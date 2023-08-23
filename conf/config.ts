@@ -6,11 +6,11 @@ export const config = {
         name: 'doencasdb',
         testName: 'doencasdb-test',
         collections: {
-            doencasItems: 'doencas-items',
+            doencaItems: 'doenca-items',
             sequences: 'sequences',
         },
         sequences: {
-            toDoItemId: 'doenca-item-id',
+            doencaItemId: 'doenca-item-id',
         },
     },
     test: {
