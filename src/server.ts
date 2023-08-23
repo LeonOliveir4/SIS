@@ -2,8 +2,26 @@ import e from 'express'
 import path from 'path'
 import { engine } from 'express-handlebars'
 import fs from 'fs'
+import {DoencaItemService} from './service'
+import {Database} from './database'
+import {ValidationError} from './model'
+
+
+/**
+ * Database and service should be instantiate only once for
+ * the whole application
+ */
+const database = new Database()
+const service = new DoencaItemService(database)
+
 
 const app = e()
+
+/**
+ * router for all api calls
+ */
+// eslint-disable-next-line new-cap
+const api = e.Router()
 
 app.use(e.static(__dirname + '/public'))
 
@@ -27,6 +45,8 @@ app.use('/dist', e.static(
 app.get('/', (req, res) => {
   res.render('home', { activePage: 'home' })
 });
+
+
 
 app.get('/doencas', (req, res) => {
   const doencaSelecionada = req.query.doenca
@@ -93,6 +113,84 @@ app.get('/regiao', (req, res) => {
 app.get('/sobre', (req, res) => {
   res.render('sobre', { activePage: 'sobre' })
 });
+
+// Rotas da API de Dados
+
+/**
+ * Item list route
+ */
+app.get('/list', async (req, res) => {
+
+  try{
+
+    const doencas = await service.list()
+    console.log(doencas);
+    res.status(200).json({
+      status: 'ok',
+      doencas: doencas 
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      status: 'failure',
+      doencas:  'Internal error. Database query failed.', 
+    })
+  }
+
+})
+
+/**
+ * Item list route
+ */
+app.get('/listFiltered/:regiao/:estacao', async (req, res) => {
+
+  try{
+
+    const doencas = await service.listByregionAndSeason(req.params.regiao, req.params.estacao)
+    console.log(doencas);
+    res.status(200).json({
+      status: 'ok',
+      doencas: doencas 
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      status: 'failure',
+      doencas:  'Internal error. Database query failed.', 
+    })
+  }
+
+})
+
+/**
+ * Item insertion route
+ */
+app.put('/add', e.json(), async (req, res) => {
+  try {
+      await service.add(req.body)
+      res.status(200).json({
+          status: 'ok',
+      })
+  } catch (error) {
+      if (error instanceof ValidationError) {
+          res.status(406).json({
+              status: 'failure',
+              message: 'Invalid data received. Please check documentation.',
+              debug: 'Received: ' + JSON.stringify(req.body),
+          })
+      } else {
+          res.status(500).json({
+              status: 'failute',
+              message: 'Internal server error',
+              debug: (error as Error).message,
+          })
+      }
+  }
+})
+
+
 
 // Iniciar o servidor
 app.listen(3000, () => {

@@ -6,8 +6,56 @@ import {Database} from './database'
  */
 export class ValidationError extends Error {}
 
+
+/**
+ * Auxiliar Object.
+ * 
+ */
+export class Reincidencia{
+    regiao: string
+    estacoes: string[]
+
+    /**
+     * the constructor
+     * @param regiao the region
+     * @param estacoes the seasons
+     */
+    constructor(regiao: string, estacoes: string[]){
+        this.regiao   = regiao;
+        this.estacoes = estacoes;
+    }
+
+    /**
+     * Validate the Doenca.
+     *
+     * @return {boolean} true if the Doenca is valid, false otherwise
+     */
+    isValid = () => this.regiao.length > 0 && this.estacoes.length > 0
+
+    /**
+     * Converts a JSON representation to a DoencaItem instance, if possible.
+     *
+     * @param {any} json the JSON representation of an Doenca
+     * @return {Reincidencia} a DoencaItem instance
+     */
+    static fromJSON(json: any): Reincidencia {
+        if (!('regiao' in json)) {
+            throw new ValidationError('Missing nome field')
+        }
+        if (!('estacoes' in json)) {
+            throw new ValidationError('Missing descricao field')
+        }
+       
+        const item = new Reincidencia(json.regiao, json.estacoes)
+
+        return item
+    }
+
+}
+
 /**
  * Domain Object.
+ * 
  */
 export class DoencaItem {
     id?: number = 0
@@ -15,7 +63,8 @@ export class DoencaItem {
     descricao: string
     sintomas: string[] = []
     tratamentos: string
-    reincidencias: { [regiao: string] : string[] }
+    //reincidencias: { [regiao: string]: string[] }
+    reincidencias: Reincidencia[]
     tags?: string[] = []
     deadline?: string = ''
 
@@ -26,10 +75,11 @@ export class DoencaItem {
      * @param {string}   descricao a descricao
      * @param {string[]} sintomas os sintomas
      * @param {string}   tratamentos os tratamentos
-     * @param {{}}       reincidencias as reincidencias
+     * @param {[]}       reincidencias as reincidencias
      */
     constructor(nome: string, descricao: string, sintomas: string[], 
-        tratamentos: string, reincidencias: { [regiao: string] : string[]}) {
+        //tratamentos: string, reincidencias: { [regiao: string]: string[]}) {
+        tratamentos: string, reincidencias: Reincidencia[]) {
         this.nome = nome
         this.descricao = descricao
         this.sintomas = sintomas
@@ -53,21 +103,6 @@ export class DoencaItem {
      * @return {boolean} true, if items are equal, false otherwise
      */
     isEqual = (doenca: DoencaItem) => {
-        const compareDeadlines = (dateStrA: string, dateStrB: string) => {
-            const dateA = Date.parse(dateStrA)
-            const dateB = Date.parse(dateStrB)
-
-            if (isNaN(dateA) && isNaN(dateB)) {
-                return true
-            } else if (isNaN(dateA) || isNaN(dateB)) {
-                return false
-            } else if (dateA == dateB) {
-                return true
-            }
-
-            return false
-        }
-
         return this.id == doenca.id &&
             this.nome == doenca.nome 
            
@@ -96,7 +131,13 @@ export class DoencaItem {
             throw new ValidationError('Missing reincidencias field')
         }
 
-        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos, json.reincidencias)
+        const reincs: Reincidencia[] = json.reincidencias.map((it: any) => Reincidencia.fromJSON(it))
+
+        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos, reincs)
+
+        if ('id' in json && !isNaN(json.id)) {
+            item.id = json.id
+        }
 
         return item
     }
@@ -211,6 +252,76 @@ export class DoencaItemDAO {
         try {
             return (await this.getItemCollection().find<DoencaItem>({}).toArray())
                 .map((it) => DoencaItem.fromJSON(it))
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    }
+
+    /**
+     * List all Doencas, filtering by region and season.
+     * 
+     * @param {string} regiao the region
+     * @param {string} estacao the season
+     *
+     * @return {DoencaItem[]} an array containing all Doencas
+     */
+    async listByRegionAndSeason(regiao: string, estacao: string): Promise<DoencaItem[]> {
+        console.log('Listando Doencas com possibilidade de restricoes, verificando restricoes....')
+        try {
+            let todasDoencas = (await this.getItemCollection().
+            find<DoencaItem>({}).toArray()).map((it) => DoencaItem.fromJSON(it))
+
+            if (regiao == '*' && estacao == '*') {
+                console.log('Caiu no caso sem restricoes, * *')
+                return todasDoencas
+            }
+
+            if (estacao == '*') {
+                console.log('Caiu no caso de restricao de regiao')
+                return todasDoencas.filter((doenca) => {
+                    //return doenca.reincidencias.keys.includes(regiao)
+                    let aux = false
+                    doenca.reincidencias.forEach(reinc => {
+                        if (reinc.regiao == regiao) {
+                            aux = true
+                        }
+                    });
+                    return aux 
+                })
+            }
+
+            if (regiao == '*') {
+                console.log('Caiu no caso de restricao de estacoes')
+                return todasDoencas.filter((doenca) => {
+                    let aux = false
+                    doenca.reincidencias.forEach(reinc => {
+                        if (reinc.estacoes.includes(estacao)) {
+                            aux = true
+                        }
+                    });
+                    return aux
+                })
+            }
+            console.log('Caiu no caso de dupla restricao')
+            todasDoencas = todasDoencas.filter((doenca) => {
+                let aux = false
+                doenca.reincidencias.forEach(reinc => {
+                    if (reinc.regiao.includes(regiao)) {
+                        aux = true
+                    }
+                });
+                return aux
+            })           
+            return todasDoencas.filter((doenca) => {
+                let aux2 = false
+                    doenca.reincidencias.forEach(reinc => {
+                        if (reinc.estacoes.includes(estacao)) {
+                            aux2 = true
+                        }
+                    });
+                    return aux2
+                })
         } catch (error) {
             console.log(error)
             throw error

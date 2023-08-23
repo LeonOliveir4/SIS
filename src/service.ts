@@ -31,6 +31,18 @@ export class DoencaItemService {
     }
 
     /**
+     * List the items by region and season
+     * 
+     * @param {string} regiao the region
+     * @param {string} estacao the season
+     *
+     * @return {DoencaItem[]} a list of Doenca items
+     */
+    async listByregionAndSeason(regiao: string, estacao: string): Promise<DoencaItem[]> {
+        return await this.dao.listByRegionAndSeason(regiao, estacao)
+    }
+
+    /**
      * Add a new item
      *
      * @param {any} json the JSON representation of the item to add
