@@ -1,4 +1,4 @@
-import {Db, MongoClient} from 'mongodb';
+import {Db, MongoClient, Document} from 'mongodb';
 import {config} from '../conf/config';
 
 /**

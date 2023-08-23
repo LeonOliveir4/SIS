@@ -3,14 +3,14 @@ import {secrets} from './secrets';
 export const config = {
     db: {
         url: secrets.url,
-        name: 'todo-api',
-        testName: 'todo-api-test',
+        name: 'doencasdb',
+        testName: 'doencasdb-test',
         collections: {
-            todoItems: 'todo-items',
+            doencasItems: 'doencas-items',
             sequences: 'sequences',
         },
         sequences: {
-            toDoItemId: 'todo-item-id',
+            toDoItemId: 'doenca-item-id',
         },
     },
     test: {
