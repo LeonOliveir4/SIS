@@ -54,6 +54,10 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
+.grid_container {
+  display:grid;
+  height: 84vh;
+}
 .rodape {
   display: grid;
   place-items: center;
@@ -216,7 +220,7 @@ p {
 }
 
 .disease-list {
-  margin: 40px 40px 90px 40px;
+  margin: 0px 40px 100px 40px;
   background-color: #EBF5F9;
   border-radius: 20px;
   padding: 20px;
