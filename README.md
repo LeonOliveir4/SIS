@@ -1,5 +1,6 @@
-![Logo SIS](img/logo2.png)
-
+<div style="display: flex; justify-content: center;">
+  <img src="img/logo2.png" alt="Logo SIS" width="200" height="200">
+</div>
 
 # SIS
 
