@@ -143,9 +143,10 @@ app.get('/regiao', async (req, res) => {
     const estacao = req.query.estacao as string;
     console.log(regiao);
     console.log(estacao);
-    const doencas = await service.list(); // Listagem Full
+    const doencas = await service.listByregionAndSeason(regiao, estacao); // Listagem Full
     res.render('regiao', { doencas,
     regiao,
+    estacao,
     equal: (a:any, b: any) => a ===b // Função de comparação como helper
     });
   } catch (error) {

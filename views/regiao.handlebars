@@ -3,7 +3,6 @@
         <div class="painel-geral">
         <h5 class="SIS">Seasonal Ilness System</h5>
         <h1>Painel geral</h1>
-        {{!-- <h5 class="atualizacao">Atualizado em: </h5> --}}
         </div>
         <div class="disease-list">
             <div class="filters">
@@ -22,14 +21,14 @@
                 <div>
                     <select class="estacoes">
                         <option value="*">Todas as estações</option>
-                        <option value="primavera">Primavera</option>
-                        <option value="verao">Verão</option>
-                        <option value="outono">Outono</option>
-                        <option value="inverno">Inverno</option>
+                        <option value="primavera" {{#if (equal estacao 'primavera' )}}selected{{/if}}>Primavera</option>
+                        <option value="verao"{{#if (equal estacao 'verao' )}}selected{{/if}}>Verão</option>
+                        <option value="outono"{{#if (equal estacao 'outono' )}}selected{{/if}}>Outono</option>
+                        <option value="inverno"{{#if (equal estacao 'inverno' )}}selected{{/if}}>Inverno</option>
                     </select>
                 </div>
                 <div>
-                    <button type="button" class="painel-btn" onclick="window.location.href='#'">Pesquisar</button>
+                    <button type="button" class="painel-btn" onclick="AtualizaURL()">Pesquisar</button>
                 </div>
             </div>
             <div class="d-list">
