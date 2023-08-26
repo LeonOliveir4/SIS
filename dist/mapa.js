@@ -23,7 +23,8 @@ function apontador() {
             //description.classList.remove("active");
             console.log("clickou");
             if (event.target instanceof Element) {
-                window.location.href = 'regiao?regiao=' + event.target.getAttribute("class");
+                const regiao = event.target.getAttribute("class");
+                window.location.href = 'regiao?regiao=' + regiao.toLowerCase() + '&estacao=*';
             }
         }));
         document.onmousemove = function (e) {

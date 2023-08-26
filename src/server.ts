@@ -139,13 +139,18 @@ app.get('/mapa', (req, res) => {
 // });
 app.get('/regiao', async (req, res) => {
   try {
-    const doencas = await service.list(); // Use o método de listagem do seu serviço
-    // const doencasNomes = doencas.map(doenca => doenca.nome);
-
-    res.render('regiao', { doencas });
+    const regiao = req.query.regiao as string;
+    const estacao = req.query.estacao as string;
+    console.log(regiao);
+    console.log(estacao);
+    const doencas = await service.list(); // Listagem Full
+    res.render('regiao', { doencas,
+    regiao,
+    equal: (a:any, b: any) => a ===b // Função de comparação como helper
+    });
   } catch (error) {
     console.error(error);
-    res.render('regiao', { doencas: [] }); // Trate o erro como você desejar
+    res.render('regiao', { doencas: [] });
   }
 });
 
@@ -203,31 +208,31 @@ app.get('/listFiltered/:regiao/:estacao', async (req, res) => {
 
 })
 
-/**
- * Item insertion route
- */
-app.put('/add', e.json(), async (req, res) => {
-  try {
-      await service.add(req.body)
-      res.status(200).json({
-          status: 'ok',
-      })
-  } catch (error) {
-      if (error instanceof ValidationError) {
-          res.status(406).json({
-              status: 'failure',
-              message: 'Invalid data received. Please check documentation.',
-              debug: 'Received: ' + JSON.stringify(req.body),
-          })
-      } else {
-          res.status(500).json({
-              status: 'failute',
-              message: 'Internal server error',
-              debug: (error as Error).message,
-          })
-      }
-  }
-})
+// /**
+//  * Item insertion route
+//  */
+// app.put('/add', e.json(), async (req, res) => {
+//   try {
+//       await service.add(req.body)
+//       res.status(200).json({
+//           status: 'ok',
+//       })
+//   } catch (error) {
+//       if (error instanceof ValidationError) {
+//           res.status(406).json({
+//               status: 'failure',
+//               message: 'Invalid data received. Please check documentation.',
+//               debug: 'Received: ' + JSON.stringify(req.body),
+//           })
+//       } else {
+//           res.status(500).json({
+//               status: 'failute',
+//               message: 'Internal server error',
+//               debug: (error as Error).message,
+//           })
+//       }
+//   }
+// })
 
 // Iniciar o servidor
 app.listen(3001, () => {
