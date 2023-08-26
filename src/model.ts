@@ -63,10 +63,11 @@ export class DoencaItem {
     descricao: string
     sintomas: string[] = []
     tratamentos: string
+    transmissao: string
     //reincidencias: { [regiao: string]: string[] }
     reincidencias: Reincidencia[]
-    tags?: string[] = []
-    deadline?: string = ''
+    // tags?: string[] = []
+    // deadline?: string = ''
 
     /**
      * The constructor.
@@ -75,15 +76,17 @@ export class DoencaItem {
      * @param {string}   descricao a descricao
      * @param {string[]} sintomas os sintomas
      * @param {string}   tratamentos os tratamentos
+     * @param {string} transmissao forma de transmissao
      * @param {[]}       reincidencias as reincidencias
      */
     constructor(nome: string, descricao: string, sintomas: string[], 
         //tratamentos: string, reincidencias: { [regiao: string]: string[]}) {
-        tratamentos: string, reincidencias: Reincidencia[]) {
+        tratamentos: string, transmissao:string, reincidencias: Reincidencia[]) {
         this.nome = nome
         this.descricao = descricao
         this.sintomas = sintomas
         this.tratamentos = tratamentos
+        this.transmissao = transmissao
         this.reincidencias = reincidencias
     }
 
@@ -133,7 +136,7 @@ export class DoencaItem {
 
         const reincs: Reincidencia[] = json.reincidencias.map((it: any) => Reincidencia.fromJSON(it))
 
-        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos, reincs)
+        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos,json.transmissao, reincs)
 
         if ('id' in json && !isNaN(json.id)) {
             item.id = json.id

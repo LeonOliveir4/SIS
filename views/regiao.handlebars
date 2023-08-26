@@ -3,7 +3,7 @@
         <div class="painel-geral">
         <h5 class="SIS">Seasonal Ilness System</h5>
         <h1>Painel geral</h1>
-        <h5 class="atualizacao">Atualizado em: </h5>
+        {{!-- <h5 class="atualizacao">Atualizado em: </h5> --}}
         </div>
         <div class="disease-list">
             <div class="filters">
@@ -30,7 +30,7 @@
             <div class="d-list">
                 <ul>
                     {{#each doencas}}
-                    <li><a href="/doencas?doenca={{this}}">{{this}}</a></li>
+                    <li><a href="/doencas?id={{id}}">{{nome}}</a></li>
                     {{/each}}
                 </ul>
             </div>

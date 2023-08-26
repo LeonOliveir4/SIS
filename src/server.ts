@@ -46,47 +46,69 @@ app.get('/', (req, res) => {
   res.render('home', { activePage: 'home' })
 });
 
+// app.get('/doencas', (req, res) => {
+//   const doencaSelecionada = req.query.doenca
+//   console.log(doencaSelecionada + 'teste inicio')
 
+//   if (!doencaSelecionada) {
+//     // Se não houver parâmetro "doenca", renderize a visualização sem dados
+//     console.log('teste fim')
+//     return res.render('doencas', {
+//       nome: '',
+//       geral: '',
+//       sintomas: [],
+//       tratamento: ''
+//     });
+//   }
 
-app.get('/doencas', (req, res) => {
-  const doencaSelecionada = req.query.doenca
-  console.log(doencaSelecionada + 'teste inicio')
+//   const filePath = path.join(__dirname, '..', 'doencas', `${doencaSelecionada}.json`);
 
-  if (!doencaSelecionada) {
-    // Se não houver parâmetro "doenca", renderize a visualização sem dados
-    console.log('teste fim')
-    return res.render('doencas', {
-      nome: '',
-      geral: '',
-      sintomas: [],
-      tratamento: ''
-    });
-  }
+//   fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       return res.render('doencas', {
+//         nome: '',
+//         geral: '',
+//         sintomas: [],
+//         tratamento: ''
+//       });
+//     }
 
-  const filePath = path.join(__dirname, '..', 'doencas', `${doencaSelecionada}.json`);
+//     console.log(data + 'teste')
+//     const doencaData = JSON.parse(data)
 
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
+//     res.render('doencas', {
+//       nome: doencaData.nome,
+//       geral: doencaData.geral,
+//       sintomas: doencaData.sintomas,
+//       tratamento: doencaData.tratamentos
+//     });
+//   });
+// });
+
+app.get('/doencas', async (req, res) => {
+  const doencaSelecionada = parseInt(req.query.id as string);
+  console.log(doencaSelecionada);
+
+  try {
+    const doenca = await service.get(doencaSelecionada); // Adicione este método no seu serviço
+    console.log(doenca);
+    if (!doenca) {
       return res.render('doencas', {
         nome: '',
         geral: '',
         sintomas: [],
+        transmissao: '',
         tratamento: ''
       });
     }
-
-    console.log(data + 'teste')
-    const doencaData = JSON.parse(data)
-
-    res.render('doencas', {
-      nome: doencaData.nome,
-      geral: doencaData.geral,
-      sintomas: doencaData.sintomas,
-      tratamento: doencaData.tratamentos
-    });
-  });
+  res.render('doencas', { doenca });
+  } catch (error) {
+    console.error(error);
+    res.render('error', { message: 'Erro ao carregar informações da doença' });
+  }
 });
+
 
 app.get('/mapa', (req, res) => {
   res.render('mapa', {
@@ -94,20 +116,31 @@ app.get('/mapa', (req, res) => {
   });
 });
 
-app.get('/regiao', (req, res) => {
-  const doencasFolder = path.join(__dirname, '..', 'doencas');
+// app.get('/regiao', (req, res) => {
+//   const doencasFolder = path.join(__dirname, '..', 'doencas');
 
-  fs.readdir(doencasFolder, (err, files) => {
-    if (err) {
-      console.error(err);
-      return res.render('regiao', { doencas: [] });
-    }
+//   fs.readdir(doencasFolder, (err, files) => {
+//     if (err) {
+//       console.error(err);
+//       return res.render('regiao', { doencas: [] });
+//     }
 
-    const jsonFiles = files.filter(file => file.endsWith('.json'))
-    const doencas = jsonFiles.map(file => path.parse(file).name)
+//     const jsonFiles = files.filter(file => file.endsWith('.json'))
+//     const doencas = jsonFiles.map(file => path.parse(file).name)
 
-    res.render('regiao', { doencas })
-  });
+//     res.render('regiao', { doencas })
+//   });
+// });
+app.get('/regiao', async (req, res) => {
+  try {
+    const doencas = await service.list(); // Use o método de listagem do seu serviço
+    // const doencasNomes = doencas.map(doenca => doenca.nome);
+
+    res.render('regiao', { doencas });
+  } catch (error) {
+    console.error(error);
+    res.render('regiao', { doencas: [] }); // Trate o erro como você desejar
+  }
 });
 
 app.get('/sobre', (req, res) => {
@@ -190,9 +223,7 @@ app.put('/add', e.json(), async (req, res) => {
   }
 })
 
-
-
 // Iniciar o servidor
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Servidor iniciado na porta 3000')
 });
