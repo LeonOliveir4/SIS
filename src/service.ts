@@ -60,14 +60,14 @@ export class DoencaItemService {
      *
      * @param {number} id the id of the item to remove
      */
-    async remove(id: number): Promise<void> {
-        const status = await this.dao.removeById(id)
+    // async remove(id: number): Promise<void> {
+    //     const status = await this.dao.removeById(id)
 
-        if (!status) {
-            throw new DatabaseError(`Failed to remove item ${id} from
-                                                         the database`);
-        }
-    }
+    //     if (!status) {
+    //         throw new DatabaseError(`Failed to remove item ${id} from
+    //                                                      the database`);
+    //     }
+    // }
 
     /**
      * Add a new item

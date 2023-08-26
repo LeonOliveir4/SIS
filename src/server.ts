@@ -1,7 +1,6 @@
 import e from 'express'
 import path from 'path'
 import { engine } from 'express-handlebars'
-// import fs from 'fs'
 import {DoencaItemService} from './service'
 import {Database} from './database'
 import {ValidationError} from './model'
@@ -46,52 +45,11 @@ app.get('/', (req, res) => {
   res.render('home', { activePage: 'home' })
 });
 
-// app.get('/doencas', (req, res) => {
-//   const doencaSelecionada = req.query.doenca
-//   console.log(doencaSelecionada + 'teste inicio')
-
-//   if (!doencaSelecionada) {
-//     // Se não houver parâmetro "doenca", renderize a visualização sem dados
-//     console.log('teste fim')
-//     return res.render('doencas', {
-//       nome: '',
-//       geral: '',
-//       sintomas: [],
-//       tratamento: ''
-//     });
-//   }
-
-//   const filePath = path.join(__dirname, '..', 'doencas', `${doencaSelecionada}.json`);
-
-//   fs.readFile(filePath, 'utf8', (err, data) => {
-//     if (err) {
-//       console.error(err);
-//       return res.render('doencas', {
-//         nome: '',
-//         geral: '',
-//         sintomas: [],
-//         tratamento: ''
-//       });
-//     }
-
-//     console.log(data + 'teste')
-//     const doencaData = JSON.parse(data)
-
-//     res.render('doencas', {
-//       nome: doencaData.nome,
-//       geral: doencaData.geral,
-//       sintomas: doencaData.sintomas,
-//       tratamento: doencaData.tratamentos
-//     });
-//   });
-// });
-
 app.get('/doencas', async (req, res) => {
   const doencaSelecionada = parseInt(req.query.id as string);
-  console.log(doencaSelecionada);
 
   try {
-    const doenca = await service.get(doencaSelecionada); // Adicione este método no seu serviço
+    const doenca = await service.get(doencaSelecionada); 
     console.log(doenca);
     if (!doenca) {
       return res.render('doencas', {
@@ -122,28 +80,14 @@ app.get('/mapa', (req, res) => {
   });
 });
 
-// app.get('/regiao', (req, res) => {
-//   const doencasFolder = path.join(__dirname, '..', 'doencas');
-
-//   fs.readdir(doencasFolder, (err, files) => {
-//     if (err) {
-//       console.error(err);
-//       return res.render('regiao', { doencas: [] });
-//     }
-
-//     const jsonFiles = files.filter(file => file.endsWith('.json'))
-//     const doencas = jsonFiles.map(file => path.parse(file).name)
-
-//     res.render('regiao', { doencas })
-//   });
-// });
+/**
+ * Get list deseases route
+ */
 app.get('/regiao', async (req, res) => {
   try {
     const regiao = req.query.regiao as string;
     const estacao = req.query.estacao as string;
-    console.log(regiao);
-    console.log(estacao);
-    const doencas = await service.listByregionAndSeason(regiao, estacao); // Listagem Full
+    const doencas = await service.listByregionAndSeason(regiao, estacao); // Listagem de acordo com filtros selecionados
     res.render('regiao', { doencas,
     regiao,
     estacao,
@@ -158,8 +102,6 @@ app.get('/regiao', async (req, res) => {
 app.get('/sobre', (req, res) => {
   res.render('sobre', { activePage: 'sobre' })
 });
-
-// Rotas da API de Dados
 
 /**
  * Item list route
@@ -185,57 +127,7 @@ app.get('/list', async (req, res) => {
 
 })
 
-/**
- * Item list route
- */
-app.get('/listFiltered/:regiao/:estacao', async (req, res) => {
-
-  try{
-
-    const doencas = await service.listByregionAndSeason(req.params.regiao, req.params.estacao)
-    console.log(doencas);
-    res.status(200).json({
-      status: 'ok',
-      doencas: doencas 
-    })
-
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({
-      status: 'failure',
-      doencas:  'Internal error. Database query failed.', 
-    })
-  }
-
-})
-
-// /**
-//  * Item insertion route
-//  */
-// app.put('/add', e.json(), async (req, res) => {
-//   try {
-//       await service.add(req.body)
-//       res.status(200).json({
-//           status: 'ok',
-//       })
-//   } catch (error) {
-//       if (error instanceof ValidationError) {
-//           res.status(406).json({
-//               status: 'failure',
-//               message: 'Invalid data received. Please check documentation.',
-//               debug: 'Received: ' + JSON.stringify(req.body),
-//           })
-//       } else {
-//           res.status(500).json({
-//               status: 'failute',
-//               message: 'Internal server error',
-//               debug: (error as Error).message,
-//           })
-//       }
-//   }
-// })
-
 // Iniciar o servidor
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log('Servidor iniciado na porta 3000')
 });

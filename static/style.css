@@ -139,6 +139,20 @@ p {
   color: #fff;
 }
 
+.btn-pesquisar{
+  font-weight: bold;
+  font-size: 14px;
+  padding: 7px 30px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid #009c3b;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #009c3b;
+  background: transparent;
+  background: linear-gradient(#00929a, #00996d);
+  color: #fff;
+}
 /**
 * Pagina Doenças
 */
