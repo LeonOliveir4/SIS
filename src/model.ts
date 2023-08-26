@@ -64,10 +64,7 @@ export class DoencaItem {
     sintomas: string[] = []
     tratamentos: string
     transmissao: string
-    //reincidencias: { [regiao: string]: string[] }
     reincidencias: Reincidencia[]
-    // tags?: string[] = []
-    // deadline?: string = ''
 
     /**
      * The constructor.
@@ -80,7 +77,6 @@ export class DoencaItem {
      * @param {[]}       reincidencias as reincidencias
      */
     constructor(nome: string, descricao: string, sintomas: string[], 
-        //tratamentos: string, reincidencias: { [regiao: string]: string[]}) {
         tratamentos: string, transmissao:string, reincidencias: Reincidencia[]) {
         this.nome = nome
         this.descricao = descricao
