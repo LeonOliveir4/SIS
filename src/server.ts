@@ -87,6 +87,8 @@ app.get('/regiao', async (req, res) => {
   try {
     const regiao = req.query.regiao as string;
     const estacao = req.query.estacao as string;
+    console.log(regiao);
+    console.log(estacao);
     const doencas = await service.listByregionAndSeason(regiao, estacao); // Listagem de acordo com filtros selecionados
     res.render('regiao', { doencas,
     regiao,
