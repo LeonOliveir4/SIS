@@ -10,6 +10,9 @@ Trata-se de um desenvolvimento web que venha a facilitar o conhecimento a respei
 Para rodar o projeto rode os comandos
 
 ```bash
+  node -v (verificar se o node está instalado)
+  npm -v (verificar se o npm está instalado)
+  npm install (isso no diretório raiz)
   npm run start
 ```
 
