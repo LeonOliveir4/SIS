@@ -1,7 +1,7 @@
 import e from 'express'
 import path from 'path'
 import { engine } from 'express-handlebars'
-import fs from 'fs'
+// import fs from 'fs'
 import {DoencaItemService} from './service'
 import {Database} from './database'
 import {ValidationError} from './model'
@@ -102,7 +102,13 @@ app.get('/doencas', async (req, res) => {
         tratamento: ''
       });
     }
-  res.render('doencas', { doenca });
+  res.render('doencas', { 
+    nome: doenca.nome,
+    descricao: doenca.descricao,
+    sintomas: doenca.sintomas,
+    transmissao: doenca.transmissao,
+    tratamentos: doenca.tratamentos
+  });
   } catch (error) {
     console.error(error);
     res.render('error', { message: 'Erro ao carregar informações da doença' });
