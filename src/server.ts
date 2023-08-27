@@ -130,6 +130,6 @@ app.get('/list', async (req, res) => {
 })
 
 // Iniciar o servidor
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Servidor iniciado na porta 3000')
 });

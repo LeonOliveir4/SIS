@@ -1,17 +1,17 @@
-import {config} from '../conf/config'
-import {Database} from './database'
+import { config } from '../conf/config'
+import { Database } from './database'
 
 /**
  * Custom exception to signal a validation error
  */
-export class ValidationError extends Error {}
+export class ValidationError extends Error { }
 
 
 /**
  * Auxiliar Object.
  * 
  */
-export class Reincidencia{
+export class Reincidencia {
     regiao: string
     estacoes: string[]
 
@@ -20,8 +20,8 @@ export class Reincidencia{
      * @param regiao the region
      * @param estacoes the seasons
      */
-    constructor(regiao: string, estacoes: string[]){
-        this.regiao   = regiao;
+    constructor(regiao: string, estacoes: string[]) {
+        this.regiao = regiao;
         this.estacoes = estacoes;
     }
 
@@ -45,7 +45,7 @@ export class Reincidencia{
         if (!('estacoes' in json)) {
             throw new ValidationError('Missing descricao field')
         }
-       
+
         const item = new Reincidencia(json.regiao, json.estacoes)
 
         return item
@@ -76,8 +76,8 @@ export class DoencaItem {
      * @param {string} transmissao forma de transmissao
      * @param {[]}       reincidencias as reincidencias
      */
-    constructor(nome: string, descricao: string, sintomas: string[], 
-        tratamentos: string, transmissao:string, reincidencias: Reincidencia[]) {
+    constructor(nome: string, descricao: string, sintomas: string[],
+        tratamentos: string, transmissao: string, reincidencias: Reincidencia[]) {
         this.nome = nome
         this.descricao = descricao
         this.sintomas = sintomas
@@ -91,9 +91,9 @@ export class DoencaItem {
      *
      * @return {boolean} true if the Doenca is valid, false otherwise
      */
-    isValid = () => this.descricao.length > 0 && this.nome.length > 0 && 
-    this.sintomas.length > 0 && this.tratamentos.length > 0 && 
-    this.reincidencias.keys.length > 0
+    isValid = () => this.descricao.length > 0 && this.nome.length > 0 &&
+        this.sintomas.length > 0 && this.tratamentos.length > 0 &&
+        this.reincidencias.keys.length > 0
 
     /**
      * Check equality between two Doencas.
@@ -103,8 +103,8 @@ export class DoencaItem {
      */
     isEqual = (doenca: DoencaItem) => {
         return this.id == doenca.id &&
-            this.nome == doenca.nome 
-           
+            this.nome == doenca.nome
+
     }
 
     /**
@@ -132,7 +132,7 @@ export class DoencaItem {
 
         const reincs: Reincidencia[] = json.reincidencias.map((it: any) => Reincidencia.fromJSON(it))
 
-        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos,json.transmissao, reincs)
+        const item = new DoencaItem(json.nome, json.descricao, json.sintomas, json.tratamentos, json.transmissao, reincs)
 
         if ('id' in json && !isNaN(json.id)) {
             item.id = json.id
@@ -192,7 +192,7 @@ export class DoencaItemDAO {
     private async newId(): Promise<number> {
         try {
             let lastId = await this.getSequenceCollection()
-                .findOne<DoencaId>({name: config.db.sequences.doencaItemId})
+                .findOne<DoencaId>({ name: config.db.sequences.doencaItemId })
 
             if (!lastId) {
                 lastId = {
@@ -204,9 +204,9 @@ export class DoencaItemDAO {
             }
 
             const result = await this.getSequenceCollection().replaceOne(
-                {name: config.db.sequences.doencaItemId},
+                { name: config.db.sequences.doencaItemId },
                 lastId,
-                {upsert: true},
+                { upsert: true },
             )
 
             if (result.acknowledged) {
@@ -269,7 +269,7 @@ export class DoencaItemDAO {
         console.log('Listando Doencas com possibilidade de restricoes, verificando restricoes....')
         try {
             let todasDoencas = (await this.getItemCollection().
-            find<DoencaItem>({}).toArray()).map((it) => DoencaItem.fromJSON(it))
+                find<DoencaItem>({}).toArray()).map((it) => DoencaItem.fromJSON(it))
 
             if (regiao == '*' && estacao == '*') {
                 console.log('Caiu no caso sem restricoes, * *')
@@ -286,7 +286,7 @@ export class DoencaItemDAO {
                             aux = true
                         }
                     });
-                    return aux 
+                    return aux
                 })
             }
 
@@ -302,25 +302,23 @@ export class DoencaItemDAO {
                     return aux
                 })
             }
-            console.log('Caiu no caso de dupla restricao')
-            todasDoencas = todasDoencas.filter((doenca) => {
-                let aux = false
-                doenca.reincidencias.forEach(reinc => {
+            console.log('Caiu no caso de dupla restricao');
+            const filteredDoencas = todasDoencas.filter((doenca) => {
+                let regiaoMatches = false;
+                let estacaoMatches = false;
+
+                doenca.reincidencias.forEach((reinc) => {
                     if (reinc.regiao.includes(regiao)) {
-                        aux = true
+                        regiaoMatches = true;
+                        if (reinc.estacoes.includes(estacao)) {
+                            estacaoMatches = true;
+                        }
                     }
                 });
-                return aux
-            })           
-            return todasDoencas.filter((doenca) => {
-                let aux2 = false
-                    doenca.reincidencias.forEach(reinc => {
-                        if (reinc.estacoes.includes(estacao)) {
-                            aux2 = true
-                        }
-                    });
-                    return aux2
-                })
+                return regiaoMatches && estacaoMatches;
+            });
+
+            return filteredDoencas;
         } catch (error) {
             console.log(error)
             throw error
@@ -335,7 +333,7 @@ export class DoencaItemDAO {
     async findById(id: number): Promise<DoencaItem> {
         try {
             const response = await this.getItemCollection()
-                .findOne<DoencaItem>({id: id})
+                .findOne<DoencaItem>({ id: id })
 
             if (response) {
                 return response
@@ -358,7 +356,7 @@ export class DoencaItemDAO {
     async update(doenca: DoencaItem): Promise<boolean> {
         try {
             const response = await this.getItemCollection().replaceOne(
-                {id: doenca.id}, doenca)
+                { id: doenca.id }, doenca)
             return (response) ? response.matchedCount > 0 : false
         } catch (error) {
             console.error('Failed to update element')
@@ -375,7 +373,7 @@ export class DoencaItemDAO {
     async removeById(id: number): Promise<boolean> {
         try {
             const response = await this.getItemCollection().deleteOne(
-                {id: id},
+                { id: id },
                 {})
             return (response.deletedCount) ? response.deletedCount > 0 : false
         } catch (error) {
